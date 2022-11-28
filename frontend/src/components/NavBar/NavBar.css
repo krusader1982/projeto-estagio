@@ -1,0 +1,44 @@
+body,
+ul,
+li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #eb085f
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #D29bb0;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.menu {
+    display: flex;
+}
+
+.menu li {
+    margin-left: 10px;
+}
+
+.menu li a {
+    display: block;
+    padding: 10px;
+    background: #D29bb0;
+}
+
+.menu_logout li {
+    display: block;
+    padding: 5px;
+    background: #D29bb0;
+}

@@ -1,0 +1,23 @@
+.card--container--Medida {
+    width: 20vw;
+    border: 3px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.card--container--Medida:hover {
+    background-color: rgb(189, 255, 127);
+}
+
+.card--title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card--body {
+    margin-top: 5px;
+}
+
+.flex {
+    display: flex
+}

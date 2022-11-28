@@ -1,0 +1,80 @@
+.ficha_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 55%;
+}
+
+.ficha {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ficha_registro {
+    padding: 1% 1%;
+    border: 3px solid rgb(3, 3, 3);
+    border-radius: 5px;
+    margin-top: 0vh;
+    background-color: rgb(226, 226, 235);
+}
+
+.ficha_registro>p {
+    margin: 10px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.ficha_medida {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.ficha_registro_span {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.ficha_registro_GC {
+    margin: 10px;
+    background-color: rgb(226, 226, 235);
+}
+
+.ficha_registro_GC>ul,
+li {
+    margin-left: 10px;
+    background-color: rgb(226, 226, 235);
+}
+
+.ficha_registro_MM {
+    margin: 10px;
+    background-color: rgb(226, 226, 235);
+}
+
+.ficha_registro_MM>ul,
+li {
+    margin-left: 10px;
+    background-color: rgb(226, 226, 235);
+}
+
+.ficha_registro_span_2 {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.graficos {
+    display: flex;
+    width: 55%;
+    justify-content: space-between;
+    padding: 1%;
+}
+
+.graficos_aluno {
+    display: flex;
+    padding: 1% 1%;
+    margin: 15px;
+    width: 60%;
+    align-items: center;
+}

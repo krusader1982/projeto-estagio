@@ -1,0 +1,15 @@
+body {
+    height: 100%;
+    font-family: "Ubuntu", sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.home {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    height: 100%;
+    width: 100%;
+}

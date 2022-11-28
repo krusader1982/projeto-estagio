@@ -1,0 +1,9 @@
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+.register--container {
+    padding: 2%;
+    margin-left: 10px;
+}
