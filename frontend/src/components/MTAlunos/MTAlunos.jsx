@@ -1,4 +1,3 @@
-
 import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper } from '@mui/material'
 import SearchBar from "material-ui-search-bar";
 import React, { useState, useEffect } from 'react'
@@ -8,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Link } from 'react-router-dom'
+import NavBar from '../NavBar/NavBar';
 
 export const MTAlunos = () => {
   const [alunos, setAlunos] = useState([]);
@@ -46,6 +46,8 @@ export const MTAlunos = () => {
   }
 
   return (
+    <>
+    <NavBar/>
     <Paper>
       <SearchBar
         value={searched}
@@ -86,6 +88,9 @@ export const MTAlunos = () => {
         </Table>
       </TableContainer>
     </Paper>
+
+    </>
+    
   )
 }
 

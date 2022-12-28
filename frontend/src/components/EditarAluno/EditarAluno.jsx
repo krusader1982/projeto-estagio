@@ -5,6 +5,7 @@ import { FormControl, FormGroup, InputLabel, Input, Typography, Button, styled }
 import { useNavigate, useParams } from "react-router-dom";
 
 import { getAluno, editAluno } from "../Alunos/Alunos"
+import NavBar from "../NavBar/NavBar";
 
 const Container = styled(FormGroup)`
 width: 50%;
@@ -55,35 +56,39 @@ const EditarAluno = () => {
 
 
     return (
-        <Container>
-            <Typography variant='h4' >Editar Aluno</Typography>
-            <FormControl>
-                <InputLabel>Nome</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name="nome" value={aluno.nome} />
-            </FormControl>
-            <FormControl>
-                <InputLabel>Email</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name="email" value={aluno.email} />
-            </FormControl>
-            <FormControl>
-                <InputLabel>Sexo</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name="sexo" value={aluno.sexo} />
-            </FormControl>
-            <FormControl>
-                <InputLabel>dt_nascimento</InputLabel>
-                <Input type="date" onChange={(e) => onValueChange(e)} name="dt_nascimento" value={aluno.dt_nascimento} />
-            </FormControl>
-            <FormControl>
-                <InputLabel>Celular</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name="celular" value={aluno.celular} />
-            </FormControl>
-            <FormControl>
-                <Button onClick={() => addUserDetails()} variant='contained'>Salvar</Button>
-            </FormControl>
-            <FormControl>
-                <Button onClick={() => cancelUserDetails()} color="error" variant="outlined">Cancelar</Button>
-            </FormControl>
-        </Container>
+        <>
+            <NavBar />
+            <Container>
+                <Typography variant='h4' >Editar Aluno</Typography>
+                <FormControl>
+                    <InputLabel>Nome</InputLabel>
+                    <Input onChange={(e) => onValueChange(e)} name="nome" value={aluno.nome} />
+                </FormControl>
+                <FormControl>
+                    <InputLabel>Email</InputLabel>
+                    <Input onChange={(e) => onValueChange(e)} name="email" value={aluno.email} />
+                </FormControl>
+                <FormControl>
+                    <InputLabel>Sexo</InputLabel>
+                    <Input onChange={(e) => onValueChange(e)} name="sexo" value={aluno.sexo} />
+                </FormControl>
+                <FormControl>
+                    <InputLabel>dt_nascimento</InputLabel>
+                    <Input type="date" onChange={(e) => onValueChange(e)} name="dt_nascimento" value={aluno.dt_nascimento} />
+                </FormControl>
+                <FormControl>
+                    <InputLabel>Celular</InputLabel>
+                    <Input onChange={(e) => onValueChange(e)} name="celular" value={aluno.celular} />
+                </FormControl>
+                <FormControl>
+                    <Button onClick={() => addUserDetails()} variant='contained'>Salvar</Button>
+                </FormControl>
+                <FormControl>
+                    <Button onClick={() => cancelUserDetails()} color="error" variant="outlined">Cancelar</Button>
+                </FormControl>
+            </Container>
+
+        </>
 
 
     )

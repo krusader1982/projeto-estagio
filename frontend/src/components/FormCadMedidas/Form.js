@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import FormGorduraMassa from './FormGorduraMassa';
 import FormMed1 from './FormMed1';
 import FormOutrasMedidas from './FormOutrasMedidas';
+import NavBar from '../NavBar/NavBar';
 
 function Form() {
     const [page, setPage] = useState(0);
@@ -83,36 +84,43 @@ function Form() {
     console.log(formData)
 
     return (
-        <div className='form' >
-            <div >
-                <h1>{FormTitulo[page]} </h1>
-            </div>
-            <div >
-                {PageDisplay()}
-            </div>
-            <div >
-                <button
-                    disabled={page === 0}
-                    onClick={() => {
-                        setPage((currPage) => currPage - 1);
-                    }}
-                >
-                    Prev
-                </button>
-                <button
-                    onClick={() => {
-                        if (page === FormTitulo.length - 1) {
-                            handleClickButton()
-                        } else {
-                            setPage((currPage) => currPage + 1);
-                        }
+        <>
+            <NavBar />
+            <div className='app--container' >
+                <div className='register--title'>
+                    <h1>{FormTitulo[page]} </h1>
+                </div>
+                <div >
+                    {PageDisplay()}
+                </div>
+                <div >
+                    <button
+                        className='register--button--form'
+                        disabled={page === 0}
+                        onClick={() => {
+                            setPage((currPage) => currPage - 1);
+                        }}
+                    >
+                        Prev
+                    </button>
+                    <button
+                        className='register--button--form'
+                        onClick={() => {
+                            if (page === FormTitulo.length - 1) {
+                                handleClickButton()
+                            } else {
+                                setPage((currPage) => currPage + 1);
+                            }
 
-                    }}
-                >
-                    {page === FormTitulo.length - 1 ? "Cadastrar" : "Próximo"}
-                </button>
+                        }}
+                    >
+                        {page === FormTitulo.length - 1 ? "Cadastrar" : "Próximo"}
+                    </button>
+                </div>
             </div>
-        </div>
+
+        </>
+
     )
 }
 

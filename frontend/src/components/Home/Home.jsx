@@ -1,10 +1,13 @@
 import React from 'react'
 import logo from "../../assets/head.png"
 import './Home.css'
+import NavBar from '../NavBar/NavBar'
 
 
 const Home = () => {
   return (
+    <>
+    <NavBar />
     <div className='home'>
       <div >
         <img className="logo"
@@ -12,6 +15,8 @@ const Home = () => {
           alt="logo" />
       </div>
     </div>
+    </>
+    
 
   )
 }

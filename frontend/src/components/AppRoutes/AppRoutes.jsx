@@ -13,7 +13,7 @@ import DetalhesAluno from "../Aluno/DetalhesAluno";
 import Medidas from "../Medidas/Medidas";
 //import Medida from "../Medida/Medida";
 import DetalhesMedida from "../Medida/DetalhesMedida";
-import NavBar from "../NavBar/NavBar";
+//import NavBar from "../NavBar/NavBar";
 //import AlunoTabela from "../AlunoTabela/AlunoTabela";
 import MTAlunos from "../MTAlunos/MTAlunos";
 //import Agua from "../Graficos/Agua";
@@ -34,6 +34,8 @@ import Form from "../FormCadMedidas/Form";
 import { AuthProvider, AuthContext } from "../context/auth";
 
 const AppRoutes = () => {
+    
+
 
     const Private = ({ children }) => {
         const { authenticated, loading } = useContext(AuthContext);
@@ -51,15 +53,19 @@ const AppRoutes = () => {
     return (
         <BrowserRouter >
             <AuthProvider >
-                <NavBar />
-                <Routes>
-                    <Route path="/" element={<Home />} />
+                
+            
+                
+            
+                <Routes>  
+                
+                    <Route path="/" element={<Private><Home /></Private> } />
                     <Route path="/signup" element={<Signup />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/tabela/:id/cadastrarmedidas" element={<Form />} />
+                    <Route path="/login" element={<Login  />} />
+                    <Route path="/tabela/:id/cadastrarmedidas" element={<CadastrarMedidas />} />
                     <Route path="/aluno/:id/fichas" element={<Fichas />} />
                     <Route path="/cadastrar" element={<Private><CadastrarAluno /></Private>} />
-                    <Route path="/aluno/:id/cadastrarmedidas" element={<CadastrarMedidas />} />
+                    <Route path="/aluno/:id/cadastrarmedidas" element={<Form />} />
                     <Route path="/medidas" element={<Medidas />} />
                     <Route path="/aluno/:id/medidas" element={<DetalhesMedida />} />
                     <Route path="/alunos" element={<Private><MTAlunos /></Private>} />

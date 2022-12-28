@@ -1,97 +1,137 @@
 import React, { useState, useEffect } from "react";
-import { Chart } from "react-google-charts";
 import { useParams } from "react-router-dom";
+import Chart from 'react-apexcharts';
 import Axios from 'axios'
-
-const IMC = 34.9
-
-
-
-const Number = () => {
-    return IMC
-}
-
-export function getData() {
-    return [
-        ["Label", "Value"],
-        ["IMC", Number()],
-    ];
-}
-export const options = {
-    width: 400,
-    height: 220,
-    greenFrom: 18.5,
-    greenTo: 25,
-    yellowFrom: 25,
-    yellowTo: 30,
-    redFrom: 30,
-    redTo: 41,
-    minorTicks: 10,
-    min: 15,
-    max: 41
-};
-
 
 const IMC2 = () => {
 
+
     const { id } = useParams();
-    const [data, setData] = useState(getData);
-    const [x, setX] = useState("Selecione a data");
-    const [date, setDate] = useState([]);
+
+    const [options, setObject] = useState(
+        {
+            chart: {
+                height: 350,
+                type: 'area',
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            fill: {
+                type: 'solid',
+                opacity: [0.35, 1],
+            },
+            labels: [],
+            markers: {
+                size: 0
+            },
+            yaxis: [
+                {
+                    title: {
+                        text: 'IMC',
+                    },
+                },
+            ],
+            tooltip: {
+                shared: true,
+                intersect: false,
+                y: {
+                    formatter: function (y) {
+                        if (typeof y !== "undefined") {
+                            return y.toFixed(0) + " Kg";
+                        }
+                        return y;
+                    }
+                }
+            }
+        },
+    )
+
+    const [series, setSeries] = useState(
+        [{
+            name: 'Aluno',
+            type: 'line',
+            data: []
+        }],
+    )
 
     useEffect(() => {
-        const id = setInterval(() => {
-            setData(getData());
-        }, 3000);
+        const IMC = [];
+        const medida=[];
 
-        return () => {
-            clearInterval(id);
-        };
-    });
-    const handleChange = (e) => {
-        setX(e.target.value);
-        const data = e.target.value
-        console.log(data);
-    };
-    useEffect(() => {
-        const medida = [];
-        const imc = [];
-
-        Axios.get(`http://localhost:3006/aluno/${id}/imc`).then(response => {
-            //console.log("response", response)
-            response.data.medidas.map(item => {
-                console.log("item", item)
-                medida.push(item.data_medida)
-                imc.push(item.imc)
+        Axios.get(`http://localhost:3006/aluno/${id}/medidas`).then(response => {
+            console.log("response", response)
+            response.data.medidas.map(item=>{
+                console.log("item",item)
+                IMC.push(item.IMC)
+                medida.push(item.data_medida)                
             })
-
-            setDate(
-                medida
+            setObject(
+                {
+                    chart: {
+                        height: 350,
+                        type: 'area',
+                    },
+                    stroke: {
+                        curve: 'straight'
+                    },
+                    fill: {
+                        type: 'solid',
+                        opacity: [0.35, 1],
+                    },
+                    labels: medida,
+                    markers: {
+                        size: 0
+                    },
+                    yaxis: [
+                        {
+                            title: {
+                                text: 'IMC',
+                            },
+                        },
+                    ],
+                    tooltip: {
+                        shared: true,
+                        intersect: false,
+                        y: {
+                            formatter: function (y) {
+                                if (typeof y !== "undefined") {
+                                    return y.toFixed(0) + " Kg";
+                                }
+                                return y;
+                            }
+                        }
+                    }
+                },
             )
-
-        }).catch(e => {
+            setSeries(
+                [{
+                    name: 'Aluno',
+                    type: 'line',
+                    data: IMC
+                }],
+            )
+            console.log("peso", IMC,medida)
+        }).catch(e=> {
             alert(e);
         })
-    }, [id])
+    },[id])
 
     return (
-        <div>
+        <React.Fragment>
 
-            <h1>{x} </h1>
-            <select onChange={(e) => handleChange(e)}>
-                <option value="">Selecione </option>
-                {
-                    date.map((item, index) => <option key={index} value={item} >{item} </option>)
-                }
-            </select>
-            <Chart
-                chartType="Gauge"
-                width="300px"
-                height="200px"
-                data={data}
-                options={options}
-            />
-        </div>
+                <div className="graph">
+                    <div>IMC</div>
+                    <Chart type='area'
+                        width={500}
+                        height={250}
+                        series={series}
+                        options={options}
+                    >
+                    </Chart>
+                </div>
+
+            </React.Fragment>
     )
 }
 

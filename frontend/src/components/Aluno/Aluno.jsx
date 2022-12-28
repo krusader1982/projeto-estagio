@@ -2,10 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from "@mui/material";
 import "./Aluno.css"
+import NavBar from '../NavBar/NavBar';
 
 function Aluno(props) {
   return (
     <>
+    <NavBar/>
     <div className='flex' >
         <div className='card--container'>
           <h1 className='card--title'>{props.aluno} </h1>
